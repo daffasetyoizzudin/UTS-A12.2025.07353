@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DAZ MUSIC — Toko Alat Musik Premium</title>
+  <meta name="description" content="Temukan alat musik premium yang dirancang untuk menginspirasi kreativitas Anda dan meningkatkan setiap penampilan di DAZ MUSIC." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <!-- Bootstrap 5 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" aria-label="DAZ MUSIC Beranda">
+        <span class="logo-mark" aria-hidden="true">DM</span>
+        <span class="logo-text">DAZ MUSIC</span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Navigasi Utama">
+        <ul class="nav-list">
+          <li><a href="#categories" class="nav-link">Katalog</a></li>
+          <li><a href="#new-arrivals" class="nav-link">Produk Terbaru</a></li>
+          <li><a href="#brand-story" class="nav-link">Tentang Kami</a></li>
+          <li><a href="#footer" class="nav-link">Kontak</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="icon-btn" id="searchToggleBtn" aria-label="Buka Pencarian Produk" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="20" y1="20" x2="16.35" y2="16.35"></line>
+          </svg>
+        </button>
+
+      
+        <button type="button" class="icon-btn cart-trigger" id="cartToggleBtn" aria-label="Buka Keranjang Belanja">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-badge" id="cartCountBadge">0</span>
+        </button>
+
+        <button type="button" class="hamburger-btn" id="mobileMenuBtn" aria-label="Buka/Tutup Menu" aria-expanded="false" aria-controls="mainNav">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="search-bar-panel" id="searchPanel" hidden>
+      <div class="search-inner">
+        <div class="search-input-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="20" y1="20" x2="16.35" y2="16.35"></line>
+          </svg>
+          <input type="search" id="searchInput" placeholder="Cari gitar, studio monitor, keyboard, mikrofon..." autocomplete="off" />
+          <button type="button" class="search-close-btn" id="searchCloseBtn" aria-label="Tutup Pencarian">&times;</button>
+        </div>
+        <div class="search-results" id="searchResults" aria-live="polite"></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+    <section class="hero-section" id="hero">
+      <div class="hero-video-wrap" aria-hidden="true">
+        <video
+          class="hero-video"
+          id="heroBgVideo"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+        >
+          
+           <source src="../assets/hero-bg.mp4" type="video/mp4" 
+          <source src="../assets/hero-bg.webm" type="video/webm" 
+        </video>
+        <!-- Overlay gelap supaya teks tetap terbaca -->
+        <div class="hero-video-overlay"></div>
+        <!-- Tombol unmute / mute -->
+        <button type="button" class="hero-mute-btn" id="heroMuteBtn" aria-label="Aktifkan suara video">
+          <!-- Ikon MUTED (default) -->
+          <svg class="icon-muted" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+          <!-- Ikon UNMUTED -->
+          <svg class="icon-unmuted" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Elemen Dekoratif Geometris & Monogram Background (Parallax Slow) -->
+      <div class="hero-bg-layer" data-parallax="slow" data-speed="0.18" aria-hidden="true">
+        <div class="hero-monogram">DM</div>
+        <div class="hero-geo-frame hero-geo-left"></div>
+        <div class="hero-geo-frame hero-geo-right"></div>
+      </div>
+
+     
+      <div class="hero-inner" id="heroScaleContainer">
+        <div class="hero-copy" data-parallax="fast" data-speed="-0.12">
+          <p class="hero-kicker" id="heroKicker">TEMUKAN SUARAMU</p>
+          <h1 class="hero-headline" id="heroHeadline">SETIAP NADA<br />PUNYA CERITA.</h1>
+          <p class="hero-description" id="heroDescription">
+            Jelajahi alat musik premium yang dirancang untuk menginspirasi kreativitas Anda dan meningkatkan setiap penampilan.
+          </p>
+          <div class="hero-cta-group">
+            <a href="#new-arrivals" class="btn btn-primary">Jelajahi Koleksi</a>
+            <a href="#parallax-showcase" class="btn btn-outline">Temukan Lebih</a>
+          </div>
+        </div>
+
+        <div class="hero-BottomRight" data-parallax="fast" data-speed="-0.08">
+          <p class="hero-model-tag" id="heroModelTag">AG-01 NATURAL SERIES</p>
+          <p class="hero-slogan">KESEMPURNAAN<br />DI SETIAP NADA.</p>
+        </div>
+      </div>
+
+      <button type="button" class="hero-nav-arrow hero-arrow-prev" id="heroPrevBtn" aria-label="Instrumen Unggulan Sebelumnya">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <button type="button" class="hero-nav-arrow hero-arrow-next" id="heroNextBtn" aria-label="Instrumen Unggulan Berikutnya">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+      <div class="hero-Pagination" id="heroIndicators" role="tablist" aria-label="Slide Hero">
+        <button type="button" class="hero-dot active" data-slide="0" role="tab" aria-selected="true" aria-label="Slide 1: Gitar Akustik"></button>
+        <button type="button" class="hero-dot" data-slide="1" role="tab" aria-selected="false" aria-label="Slide 2: Gitar Elektrik"></button>
+        <button type="button" class="hero-dot" data-slide="2" role="tab" aria-selected="false" aria-label="Slide 3: Mikrofon Studio"></button>
+      </div>
+    </section>
+
+    <section class="category-strip-section" id="categories" aria-label="Kategori Instrumen">
+      <div class="category-strip-grid" id="categoryGrid">
+        <a href="#new-arrivals" class="category-tile" data-category="Guitars" data-reveal="up">
+          <div class="category-img-wrap">
+            <img src="../assets/cat-guitars.jpg" alt="Kategori Gitar" loading="lazy" />
+          </div>
+          <span class="category-label">GITAR</span>
+        </a>
+
+        <a href="#new-arrivals" class="category-tile" data-category="Drums" data-reveal="up">
+          <div class="category-img-wrap">
+            <img src="../assets/cat-drums.jpg" alt="Kategori Drum" loading="lazy" />
+          </div>
+          <span class="category-label">DRUM</span>
+        </a>
+
+        <a href="#new-arrivals" class="category-tile" data-category="Keyboards" data-reveal="up">
+          <div class="category-img-wrap">
+            <img src="../assets/cat-keyboards.jpg" alt="Kategori Keyboard" loading="lazy" />
+          </div>
+          <span class="category-label">KEYBOARD</span>
+        </a>
+
+        <a href="#new-arrivals" class="category-tile" data-category="Studio Monitors" data-reveal="up">
+          <div class="category-img-wrap">
+            <img src="../assets/cat-monitors.jpg" alt="Kategori Studio Monitor" loading="lazy" />
+          </div>
+          <span class="category-label">STUDIO MONITOR</span>
+        </a>
+
+        <a href="#new-arrivals" class="category-tile" data-category="Headphones" data-reveal="up">
+          <div class="category-img-wrap">
+            <img src="../assets/cat-headphones.jpg" alt="Kategori Headphone" loading="lazy" />
+          </div>
+          <span class="category-label">HEADPHONE</span>
+        </a>
+
+        <a href="#new-arrivals" class="category-tile" data-category="Microphones" data-reveal="up">
+          <div class="category-img-wrap">
+            <img src="../assets/cat-microphones.jpg" alt="Kategori Mikrofon" loading="lazy" />
+          </div>
+          <span class="category-label">MIKROFON</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="catalogue-royal-wrapper">
+      <!-- Filter Status Bar (Muncul saat pengguna klik kategori) -->
+      <div class="active-filter-banner" id="activeFilterBanner" hidden>
+        <div class="section-container filter-banner-inner">
+          <span id="activeFilterText">Menampilkan kategori: <strong>Semua</strong></span>
+          <button type="button" class="btn-reset-filter" id="resetCategoryBtn">Tampilkan Semua Instrumen</button>
+        </div>
+      </div>
+
+      <section class="catalogue-section" id="new-arrivals">
+        <div class="section-container">
+          <div class="section-header" data-reveal="left">
+            <div class="section-title-group">
+              <div class="section-marker" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+              </div>
+              <div>
+                <h2 class="section-heading">PRODUK TERBARU</h2>
+                <p class="section-subtitle">Temukan produk terkini untuk melengkapi suaramu.</p>
+              </div>
+            </div>
+            <div class="carousel-dots" id="newArrivalsDots" aria-label="Posisi Slide Produk Terbaru"></div>
+          </div>
+
+          <div class="carousel-shell">
+            <button type="button" class="carousel-arrow prev" data-carousel-target="newArrivalsTrack" data-dir="prev" aria-label="Produk Terbaru Sebelumnya">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+
+            <div class="product-carousel-viewport">
+              <div class="product-track" id="newArrivalsTrack" tabindex="0" aria-label="Produk Terbaru">
+                <!-- Dirender secara dinamis oleh script.js -->
+              </div>
+            </div>
+
+            <button type="button" class="carousel-arrow next" data-carousel-target="newArrivalsTrack" data-dir="next" aria-label="Produk Terbaru Berikutnya">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="catalogue-section popular-section" id="popular-picks">
+        <div class="section-container">
+          <div class="section-header" data-reveal="left">
+            <div class="section-title-group">
+              <div class="section-marker" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                </svg>
+              </div>
+              <div>
+                <h2 class="section-heading">PILIHAN POPULER</h2>
+                <p class="section-subtitle">Peralatan terpercaya untuk setiap jenis musisi.</p>
+              </div>
+            </div>
+            <div class="carousel-dots" id="popularPicksDots" aria-label="Posisi Slide Pilihan Populer"></div>
+          </div>
+
+          <div class="carousel-shell">
+            <button type="button" class="carousel-arrow prev" data-carousel-target="popularPicksTrack" data-dir="prev" aria-label="Produk Populer Sebelumnya">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+
+            <div class="product-carousel-viewport">
+              <div class="product-track" id="popularPicksTrack" tabindex="0" aria-label="Produk Pilihan Populer">
+                <!-- Dirender secara dinamis oleh script.js -->
+              </div>
+            </div>
+
+            <button type="button" class="carousel-arrow next" data-carousel-target="popularPicksTrack" data-dir="next" aria-label="Produk Populer Berikutnya">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="split-showcase-section" id="parallax-showcase">
+      <div class="split-grid">
+        <!-- Sisi Kiri: Foto Close-up Kabel Audio / Studio Equipment -->
+        <div class="split-media-box">
+          <div class="parallax-media-inner" data-parallax="medium" data-speed="0.16">
+            <img
+              src="../assets/showcase-cables.jpg"
+              alt="Studio mixing console profesional dengan gitar di dinding"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <!-- Sisi Kanan: Panel Navy dengan Parallax & Reveal -->
+        <div class="split-content-box bg-deep-navy">
+          <div class="split-content-inner" data-reveal="right" data-parallax="slow" data-speed="-0.06">
+            <h2 class="split-heading">DIRANCANG UNTUK SUARAMU.</h2>
+            <p class="split-description">
+              Dari nada pertama hingga mixing akhir, temukan peralatan yang mendukung kreativitas dan penampilanmu. Kabel studio, interkoneksi XLR berimbang, dan monitor referensi kami menjaga setiap nuansa harmonik tanpa kehilangan sinyal.
+            </p>
+            <div class="spec-highlights">
+              <div class="spec-item">
+                <span class="spec-val">99.99%</span>
+                <span class="spec-lbl">Kemurnian Sinyal OFC</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-val">24-Bit</span>
+                <span class="spec-lbl">Headroom Studio</span>
+              </div>
+            </div>
+            <a href="#new-arrivals" class="btn btn-primary">Jelajahi Peralatan</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="split-showcase-section" id="brand-story">
+      <div class="split-grid reverse-desktop">
+        <!-- Sisi Kiri: Panel Royal Blue -->
+        <div class="split-content-box bg-royal-blue">
+          <div class="split-content-inner" data-reveal="left">
+            <h2 class="split-heading">DIBANGUN UNTUK PASSIONMU.</h2>
+            <p class="split-description">
+              DAZ MUSIC menghadirkan alat musik dan peralatan penting bagi para musisi di setiap tahap perjalanan mereka. Tujuan kami adalah memudahkan Anda menemukan peralatan yang tepat, menjelajahi kemungkinan baru, dan bermusik dengan penuh keyakinan.
+            </p>
+            <a href="#trust-section" class="btn btn-outline-light">Temukan Cerita Kami</a>
+          </div>
+        </div>
+
+        
+        <div class="split-media-box">
+          <div class="parallax-media-inner" data-parallax="medium" data-speed="0.14">
+            <img
+              src="../assets/story-headstock.jpg"
+              alt="Musisi memainkan gitar akustik di dekat jendela"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="split-showcase-section" id="trust-section">
+      <div class="split-grid">
+        <!-- Sisi Kiri: Deretan Gitar di Showroom -->
+        <div class="split-media-box">
+          <div class="parallax-media-inner" data-parallax="medium" data-speed="0.15">
+            <img
+              src="../assets/trust-showroom.jpg"
+              alt="Mikrofon retro vintage di atas panggung"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <!-- Sisi Kanan: Panel Light Blue / Slate dengan 3 Keunggulan Utama -->
+        <div class="split-content-box bg-light-blue-surface">
+          <div class="split-content-inner" data-reveal="scale">
+            <h2 class="split-heading text-dark-navy">MUSIKMU. ALATMU. PERJALANANMU.</h2>
+
+            <div class="trust-pillars">
+              <article class="trust-pillar">
+                <div class="trust-icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    <path d="M2 17l10 5 10-5"></path>
+                    <path d="M2 12l10 5 10-5"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="trust-title">Produk Pilihan Terbaik</h3>
+                  <p class="trust-desc">Setiap instrumen dan komponen studio diperiksa untuk konsistensi tonal, kemudahan bermain, dan kualitas bangunan yang tahan lama.</p>
+                </div>
+              </article>
+
+              <article class="trust-pillar">
+                <div class="trust-icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="trust-title">Dukungan Pelanggan Terpercaya</h3>
+                  <p class="trust-desc">Panduan praktis dari pemain berpengalaman dan teknisi audio untuk membantu Anda menemukan setup yang tepat sesuai kebutuhan.</p>
+                </div>
+              </article>
+
+              <article class="trust-pillar">
+                <div class="trust-icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="trust-title">Peralatan untuk Semua Musisi</h3>
+                  <p class="trust-desc">Dari gitar latihan pertama hingga studio monitor full-range dan perlengkapan panggung yang disesuaikan untuk setiap tingkat keahlian.</p>
+                </div>
+              </article>
+            </div>
+
+            <a href="#new-arrivals" class="btn btn-dark-navy">Lihat Katalog</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <!-- Call-to-Action Banner -->
+    <div class="footer-cta-band">
+      <div class="section-container footer-cta-inner" data-reveal="up">
+        <h2 class="footer-cta-heading">SIAP MENEMUKAN SUARAMU?</h2>
+        <a href="#new-arrivals" class="btn btn-primary">Jelajahi Koleksi</a>
+      </div>
+    </div>
+
+    <!-- Main Footer Columns -->
+    <div class="section-container footer-main">
+      <div class="footer-col footer-brand-col">
+        <a href="#hero" class="brand-logo">
+          <span class="logo-mark" aria-hidden="true">DM</span>
+          <span class="logo-text">DAZ MUSIC</span>
+        </a>
+        <p class="footer-brand-desc">
+          Toko alat musik modern yang menyediakan gitar akustik dan elektrik, bass, drum, keyboard, studio monitor, mikrofon, dan berbagai aksesori audio penting.
+        </p>
+        <div class="social-links" aria-label="Tautan Media Sosial">
+          <a href="#footer" class="social-link" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#footer" class="social-link" aria-label="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+            </svg>
+          </a>
+          <a href="#footer" class="social-link" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-col-title">NAVIGASI</h3>
+        <ul class="footer-links">
+          <li><a href="#categories">Katalog</a></li>
+          <li><a href="#new-arrivals">Produk Terbaru</a></li>
+          <li><a href="#popular-picks">Pilihan Populer</a></li>
+          <li><a href="#parallax-showcase">Peralatan Studio</a></li>
+          <li><a href="#brand-story">Tentang Kami</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-col-title">KATEGORI</h3>
+        <ul class="footer-links">
+          <li><a href="#new-arrivals" data-footer-cat="Guitars">Gitar &amp; Bass</a></li>
+          <li><a href="#new-arrivals" data-footer-cat="Drums">Drum &amp; Perkusi</a></li>
+          <li><a href="#new-arrivals" data-footer-cat="Keyboards">Keyboard &amp; Piano</a></li>
+          <li><a href="#new-arrivals" data-footer-cat="Studio Monitors">Studio Monitor</a></li>
+          <li><a href="#new-arrivals" data-footer-cat="Headphones">Headphone &amp; Mikrofon</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-col-title">KONTAK</h3>
+        <ul class="footer-contact-list">
+          <li>Showroom: Jl. Harmoni Raya No. 48, Jakarta</li>
+          <li>Telepon: +62 (21) 555-0194 (Placeholder)</li>
+          <li>Email: hello@dazmusic.store</li>
+          <li>Jam Buka: Sen – Sab, 10:00 – 20:00 WIB</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Form Registrasi Pengunjung -->
+    <div class="section-container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-7 col-md-9">
+          <h3 class="footer-col-title mb-4" style="color:#fff; letter-spacing:.12em;">FORM REGISTRASI PENGUNJUNG</h3>
+          <form id="visitorForm" novalidate>
+
+            <!-- Nama -->
+            <div class="mb-3">
+              <label for="visitorNama" class="form-label text-white-50">Nama</label>
+              <input type="text" class="form-control bg-transparent text-white border-secondary" id="visitorNama" placeholder="Masukkan nama Anda" required />
+              <div class="invalid-feedback">Nama tidak boleh kosong.</div>
+            </div>
+
+            <!-- Alamat -->
+            <div class="mb-3">
+              <label for="visitorAlamat" class="form-label text-white-50">Alamat</label>
+              <textarea class="form-control bg-transparent text-white border-secondary" id="visitorAlamat" rows="3" placeholder="Masukkan alamat lengkap Anda" required></textarea>
+              <div class="invalid-feedback">Alamat tidak boleh kosong.</div>
+            </div>
+
+            <!-- Kota -->
+            <div class="mb-3">
+              <label for="visitorKota" class="form-label text-white-50">Kota</label>
+              <select class="form-select bg-transparent text-white border-secondary" id="visitorKota" required>
+                <option value="" disabled selected>-- Pilih Kota --</option>
+                <option value="Semarang">Semarang</option>
+                <option value="Kudus">Kudus</option>
+                <option value="Demak">Demak</option>
+                <option value="Pekalongan">Pekalongan</option>
+                <option value="Tegal">Tegal</option>
+                <option value="Surabaya">Surabaya</option>
+                <option value="Jakarta">Jakarta</option>
+              </select>
+              <div class="invalid-feedback">Silakan pilih kota Anda.</div>
+            </div>
+
+            <!-- Checkbox konfirmasi data -->
+            <div class="mb-4">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="confirmNama" />
+                <label class="form-check-label text-white-50" for="confirmNama">
+                  Nama saya sudah benar
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="confirmAlamat" />
+                <label class="form-check-label text-white-50" for="confirmAlamat">
+                  Alamat asal saya sudah benar
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="confirmKota" />
+                <label class="form-check-label text-white-50" for="confirmKota">
+                  Kota asal saya sudah benar
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary px-4">Kirim</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom: Identitas Mahasiswa -->
+    <div class="section-container footer-bottom">
+      <p>&copy; <span id="currentYear">2026</span> DAZ MUSIC</p>
+      <p class="footer-note">
+        <strong>DAFFA SETYO IZZUDIN</strong> &mdash; NIM: A12.2025.07353
+      </p>
+    </div>
+  </footer>
+
+  <div class="overlay-backdrop" id="cartBackdrop" hidden></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-labelledby="cartDrawerTitle" aria-hidden="true">
+    <div class="cart-drawer-header">
+      <h2 id="cartDrawerTitle">KERANJANG ANDA</h2>
+      <button type="button" class="close-drawer-btn" id="closeCartBtn" aria-label="Tutup Keranjang">&times;</button>
+    </div>
+
+    <div class="cart-drawer-body" id="cartItemsContainer">
+     
+    </div>
+
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal-row">
+        <span>Subtotal</span>
+        <strong id="cartSubtotalValue">Rp0</strong>
+      </div>
+      <p class="cart-demo-notice" id="cartDemoNotice" hidden></p>
+      <div class="cart-footer-actions">
+        <button type="button" class="btn btn-primary btn-full" id="checkoutDemoBtn">Lanjut ke Checkout (Demo)</button>
+        <button type="button" class="btn btn-outline btn-full" id="clearCartBtn">Kosongkan Keranjang</button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="modal-backdrop" id="productModalBackdrop" hidden>
+    <div class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalProductTitle">
+      <button type="button" class="modal-close-btn" id="closeModalBtn" aria-label="Tutup Detail Produk">&times;</button>
+      <div class="modal-grid" id="modalContentGrid">
+      </div>
+    </div>
+  </div>
+
+  
+  <button type="button" class="back-to-top" id="backToTopBtn" aria-label="Kembali ke atas">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmVQGnNsGFjVsMyliqXTmvl3mXD+" crossorigin="anonymous"></script>
+  <!-- Visitor form validation -->
+  <script>
+    (function () {
+      var form = document.getElementById('visitorForm');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (!form.checkValidity()) {
+            form.classList.add('was-validated');
+            return;
+          }
+          var nama   = document.getElementById('visitorNama').value.trim();
+          var alamat = document.getElementById('visitorAlamat').value.trim();
+          var kota   = document.getElementById('visitorKota').value;
+          alert('Data berhasil dikirim!\n\nNama: ' + nama + '\nAlamat: ' + alamat + '\nKota: ' + kota);
+          form.reset();
+          form.classList.remove('was-validated');
+        });
+      }
+    })();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
